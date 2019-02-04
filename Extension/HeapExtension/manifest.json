@@ -7,7 +7,7 @@
     "downloads"
   ],
   "background": {
-    "scripts": ["HeapSnapshot.js"]
+    "scripts": ["heapsnapshot.js"]
   },
   "browser_action": {
     "default_icon": "icon.png",
