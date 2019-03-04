@@ -9,3 +9,4 @@ Folder organization:
 
 ## Embedded**
 ###### SentryPeripheral -> Contains the code for our hardware peripheral.
+###### ComponentTests -> Contains the code for testing our hardware components.
