@@ -13,5 +13,5 @@
     "default_icon": "icon.png",
     "default_title": "Sentry Browser Defense"
   },
-  "manifest_version": 1
+  "manifest_version": 2
 }

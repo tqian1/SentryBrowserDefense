@@ -6,6 +6,9 @@
   Contents: Contains the heap snapshot dump process for our chrome extension
 */
 
+import parseSnapshot from "parser";
+import importBin from "parser";
+
 // manages the browser extension button
 chrome.browserAction.onClicked.addListener(function(tab) {
   chrome.debugger.attach({tabId:tab.id}, version,
@@ -28,7 +31,6 @@ function onAttach(tabId) {
       url: window.URL.createObjectURL(new Blob([json], {type: 'application/json'})),
       filename: new Date().toISOString().replace(/:/g,'.') + ".heapsnapshot"
     });
-
     chrome.debugger.detach({tabId:tabId});
   });
 
