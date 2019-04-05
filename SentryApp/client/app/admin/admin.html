@@ -9,4 +9,13 @@
         <a ng-click="admin.delete(user)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
     </li>
   </ul>
+  <div ng-controller="ButtonsCtrl">
+    <h4>Add Features</h4>
+    <input type="text">
+    <button type="button" class="btn btn-primary" ng-model="singleModel" uib-btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+        Add
+    </button>
+    <input (keyup)="onKey($event)">
+  <p>{{values}}</p>
+</div>
 </div>
