@@ -19,6 +19,6 @@ module.exports = {
     uri: process.env.MONGODB_URI
       || process.env.MONGOHQ_URL
       || process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME
-      || 'mongodb://localhost/sentryapp'
+      || 'mongodb://tonyqian:hello123@ds133086.mlab.com:33086/heroku_xq1fdhqq'
   }
 };
