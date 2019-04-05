@@ -1,5 +1,8 @@
 // Karma configuration
-// http://karma-runner.github.io/0.10/config/configuration-file.html
+// http://karma-runner.github.io/0.13/config/configuration-file.html
+/*eslint-env node*/
+
+import makeWebpackConfig from './webpack.make';
 
 module.exports = function(config) {
   config.set({
@@ -16,36 +19,45 @@ module.exports = function(config) {
     },
 
     // list of files / patterns to load in the browser
-    files: [
-      // bower:js
-      // endbower
-      'node_modules/socket.io-client/socket.io.js',
-      'client/app/app.js',
-      'client/{app,components}/**/*.module.js',
-      'client/{app,components}/**/*.js',
-      'client/{app,components}/**/*.html'
-    ],
+    files: ['spec.js'],
 
     preprocessors: {
-      '**/*.html': 'ng-html2js',
-      'client/{app,components}/**/*.js': 'babel'
+      'spec.js': ['webpack']
     },
 
-    ngHtml2JsPreprocessor: {
-      stripPrefix: 'client/'
+    webpack: makeWebpackConfig({ TEST: true }),
+
+    webpackMiddleware: {
+      // webpack-dev-middleware configuration
+      // i. e.
+      noInfo: true
     },
 
-    babelPreprocessor: {
-      options: {
-        sourceMap: 'inline'
-      },
-      filename: function (file) {
-        return file.originalPath.replace(/\.js$/, '.es5.js');
-      },
-      sourceFileName: function (file) {
-        return file.originalPath;
-      }
+    coverageReporter: {
+      reporters: [{
+        type: 'html', //produces a html document after code is run
+        subdir: 'client'
+      }, {
+        type: 'json',
+        subdir: '.',
+        file: 'client-coverage.json'
+      }],
+      dir: 'coverage/' //path to created html doc
     },
+
+    plugins: [
+      require('karma-chrome-launcher'),
+      require('karma-coverage'),
+      require('karma-firefox-launcher'),
+      require('karma-mocha'),
+      require('karma-chai-plugins'),
+
+      require('karma-spec-reporter'),
+      require('karma-phantomjs-launcher'),
+      require('karma-script-launcher'),
+      require('karma-webpack'),
+      require('karma-sourcemap-loader')
+    ],
 
     // list of files / patterns to exclude
     exclude: [],
@@ -64,7 +76,7 @@ module.exports = function(config) {
     // - junit
     // - growl
     // - coverage
-    reporters: ['spec'],
+    reporters: ['spec', 'coverage'],
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,

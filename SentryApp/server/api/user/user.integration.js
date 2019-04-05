@@ -1,5 +1,7 @@
 'use strict';
 
+/* globals describe, expect, it, before, after, beforeEach, afterEach */
+
 import app from '../..';
 import User from './user.model';
 import request from 'supertest';
@@ -46,7 +48,7 @@ describe('User API:', function() {
     it('should respond with a user profile when authenticated', function(done) {
       request(app)
         .get('/api/users/me')
-        .set('authorization', 'Bearer ' + token)
+        .set('authorization', `Bearer ${token}`)
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {

@@ -1,10 +1,12 @@
 'use strict';
 
-describe('Directive: oauthButtons', function() {
+const $ = require('sprint-js');
+import OauthButtons from './index';
 
+describe('Directive: oauthButtons', function() {
   // load the directive's module and view
-  beforeEach(module('angularAdminFullstackApp'));
-  beforeEach(module('components/oauth-buttons/oauth-buttons.html'));
+  beforeEach(angular.mock.module(OauthButtons));
+  // beforeEach(angular.mock.module('components/oauth-buttons/oauth-buttons.html'));
 
   var element, parentScope, elementScope;
 
@@ -23,14 +25,16 @@ describe('Directive: oauthButtons', function() {
 
   it('should contain anchor buttons', function() {
     compileDirective('<oauth-buttons></oauth-buttons>');
-    expect(element.find('a.btn.btn-social')
+    expect($(element[0])
+        .find('a.btn.btn-social')
         .length)
       .to.be.at.least(1);
   });
 
   it('should evaluate and bind the classes attribute to scope.classes', function() {
     parentScope.scopedClass = 'scopedClass1';
-    compileDirective('<oauth-buttons classes="testClass1 {{scopedClass}}"></oauth-buttons>');
+    compileDirective(
+    '<oauth-buttons classes="testClass1 {{scopedClass}}"></oauth-buttons>');
     expect(elementScope.classes)
       .to.equal('testClass1 scopedClass1');
   });
@@ -40,14 +44,16 @@ describe('Directive: oauthButtons', function() {
     // Add classes
     elementScope.classes = 'testClass1 testClass2';
     elementScope.$digest();
-    expect(element.find('a.btn.btn-social.testClass1.testClass2')
+    expect($(element[0])
+        .find('a.btn.btn-social.testClass1.testClass2')
         .length)
       .to.be.at.least(1);
 
     // Remove classes
     elementScope.classes = '';
     elementScope.$digest();
-    expect(element.find('a.btn.btn-social.testClass1.testClass2')
+    expect($(element[0])
+        .find('a.btn.btn-social.testClass1.testClass2')
         .length)
       .to.equal(0);
   });

@@ -1,6 +1,6 @@
 {
   "generator-angular-fullstack": {
-    "generatorVersion": "5.0.0-rc.4",
+    "generatorVersion": "4.2.3",
     "endpointDirectory": "server/api/",
     "insertRoutes": true,
     "registerRoutesFile": "server/routes.js",
@@ -8,7 +8,7 @@
     "routesBase": "/api/",
     "pluralizeRoutes": true,
     "insertSockets": true,
-    "registerSocketsFile": "server/config/websockets.js",
+    "registerSocketsFile": "server/config/socketio.js",
     "socketsNeedle": "// Insert sockets below",
     "insertModels": true,
     "registerModelsFile": "server/sqldb/index.js",
@@ -19,7 +19,7 @@
       "flow": true,
       "html": true,
       "sass": true,
-      "ngroute": true,
+      "uirouter": true,
       "bootstrap": true,
       "uibootstrap": true,
       "auth": true,
@@ -49,6 +49,40 @@
     "filters": [
       "mocha",
       "expect"
+    ],
+    "extensions": [
+      "babel",
+      "js",
+      "html",
+      "scss"
+    ],
+    "directiveSimpleTemplates": "",
+    "directiveComplexTemplates": "",
+    "filterTemplates": "",
+    "serviceTemplates": "",
+    "factoryTemplates": "",
+    "controllerTemplates": "",
+    "componentTemplates": "",
+    "decoratorTemplates": "",
+    "providerTemplates": "",
+    "routeTemplates": ""
+  },
+  "generator-ng-component": {
+    "routeDirectory": "client/app/",
+    "directiveDirectory": "client/app/",
+    "componentDirectory": "client/app/components/",
+    "filterDirectory": "client/app/",
+    "serviceDirectory": "client/app/",
+    "basePath": "client",
+    "moduleName": "",
+    "modulePrompt": true,
+    "filters": [
+      "uirouter",
+      "mocha",
+      "expect",
+      "uirouter",
+      "es6",
+      "webpack"
     ],
     "extensions": [
       "babel",

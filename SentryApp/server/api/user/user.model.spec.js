@@ -183,5 +183,4 @@ describe('User Model', function() {
       });
     });
   });
-
 });

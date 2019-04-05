@@ -1,11 +1,12 @@
 'use strict';
+/*eslint no-process-env:0*/
 
 // Test specific configuration
 // ===========================
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/angularAdminFullstack-test'
+    uri: 'mongodb://localhost/sentryapp-test'
   },
   sequelize: {
     uri: 'sqlite://',

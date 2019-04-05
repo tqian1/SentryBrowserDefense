@@ -1,11 +1,18 @@
 'use strict';
 
-describe('Controller: OauthButtonsCtrl', function() {
+import {
+  OauthButtonsController
+} from './index';
 
+describe('Controller: OauthButtonsController', function() {
+  var controller, $window;
+
+  beforeEach(() => {
+    angular.module('test', [])
+      .controller('OauthButtonsController', OauthButtonsController);
+  });
   // load the controller's module
-  beforeEach(module('angularAdminFullstackApp'));
-
-  var OauthButtonsCtrl, $window;
+  beforeEach(angular.mock.module('test'));
 
   // Initialize the controller and a mock $window
   beforeEach(inject(function($controller) {
@@ -13,13 +20,13 @@ describe('Controller: OauthButtonsCtrl', function() {
       location: {}
     };
 
-    OauthButtonsCtrl = $controller('OauthButtonsCtrl', {
-      $window: $window
+    controller = $controller('OauthButtonsController', {
+      $window
     });
   }));
 
   it('should attach loginOauth', function() {
-    expect(OauthButtonsCtrl.loginOauth)
+    expect(controller.loginOauth)
       .to.be.a('function');
   });
 });
