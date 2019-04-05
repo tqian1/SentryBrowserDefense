@@ -1,7 +1,7 @@
 // Protractor configuration
 // https://github.com/angular/protractor/blob/master/referenceConf.js
 
-require('babel-register');
+'use strict';
 
 var config = {
   // The timeout for each script run on the browser. This should be longer
@@ -10,9 +10,12 @@ var config = {
 
   // A base URL for your application under test. Calls to protractor.get()
   // with relative paths will be prepended with this.
-  baseUrl: 'http://localhost:' + (process.env.PORT || '9001'),
+  baseUrl: 'http://localhost:' + (process.env.PORT || '9000'),
 
-  directConnect: true,
+  // Credientials for Saucelabs
+  sauceUser: process.env.SAUCE_USERNAME,
+
+  sauceKey: process.env.SAUCE_ACCESS_KEY,
 
   // list of files / patterns to load in the browser
   specs: [
@@ -31,9 +34,8 @@ var config = {
   capabilities: {
     'browserName': 'chrome',
     'name': 'Fullstack E2E',
-    'chromeOptions': {
-      'args': ['show-fps-counter=true']
-    },
+    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+    'build': process.env.TRAVIS_BUILD_NUMBER
   },
 
   // ----- The test framework -----
@@ -71,7 +73,7 @@ var config = {
 
     // Setup mongo for tests
     var mongoose = require('mongoose');
-    return mongoose.connect(serverConfig.mongo.uri, serverConfig.mongo.options); // Connect to database
+    mongoose.connect(serverConfig.mongo.uri, serverConfig.mongo.options); // Connect to database
   }
 };
 

@@ -1,23 +1,38 @@
-import './app.scss';
+'use strict';
 
-import './polyfills';
+angular.module('angularAdminFullstackApp', [
+  'ngAnimate',
+  'ngCookies',
+  'ngResource',
+  'ngSanitize',
+  'btford.socket-io',
+  'ui.router',
+  'ui.bootstrap',
+  'ui.sortable',
+  'ngTouch',
+  'toastr',
+  'xeditable',
+  'ui.slimscroll',
+  'ngJsTree',
+  'angular-progress-button-styles',
+  'validation.match',
+  'smart-table',
+  'angular-loading-bar',
+  'angularSpinner',
+  'ui.toggle',
 
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-// depending on the env mode, enable prod mode or add debugging modules
-if(process.env.NODE_ENV === 'production') {
-    enableProdMode();
-}
-
-import { AppModule } from './app.module';
-
-export function main() {
-    return platformBrowserDynamic().bootstrapModule(AppModule);
-}
-
-if(document.readyState === 'complete') {
-    main();
-} else {
-    document.addEventListener('DOMContentLoaded', main);
-}
+  'angularAdminFullstackApp.auth',
+  'angularAdminFullstackApp.constants',
+  'angularAdminFullstackApp.resources',
+  'angularAdminFullstackApp.theme',
+  'angularAdminFullstackApp.pages'
+  ])
+  .config(function($urlRouterProvider, $locationProvider) {
+    // $httpProvider.defaults.useXDomain = true;
+    // $httpProvider.defaults.withCredentials = true;
+    // delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    // $httpProvider.defaults.headers.common['Accept'] = 'application/json';
+    // $httpProvider.defaults.headers.common['Content-Type'] = 'application/json';
+    $urlRouterProvider.otherwise('/');
+    $locationProvider.html5Mode(true);
+  });

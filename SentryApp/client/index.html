@@ -1,0 +1,215 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <base href="/">
+    <title>Angular Admin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon-96x96.png">    <!-- build:css(client) app/vendor.css -->
+    <!-- build:css(client) app/vendor.css -->
+      <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+      <link rel="stylesheet" href="bower_components/chartist/dist/chartist.css" />
+      <link rel="stylesheet" href="bower_components/textAngular/dist/textAngular.css" />
+      <link rel="stylesheet" href="bower_components/jstree/dist/themes/default/style.css" />
+      <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+      <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css" />
+      <link rel="stylesheet" href="bower_components/angular-progress-button-styles/dist/angular-progress-button-styles.min.css" />
+      <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.css" />
+      <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+      <link rel="stylesheet" href="bower_components/bootstrap-toggle/css/bootstrap-toggle.min.css" />
+      <link rel="stylesheet" href="bower_components/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.css" />
+      <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,client}) app/app.css -->
+      <link rel="stylesheet" href="app/app.css">
+      <!-- injector:css -->
+      <!-- endinjector -->
+    <!-- endbuild -->
+  </head>
+  <body ng-app="angularAdminFullstackApp">
+    <!--[if lt IE 7]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <main ng-if="$pageFinishedLoading" ng-class="{ 'menu-collapsed': $baSidebarService.isMenuCollapsed() }">
+
+      <ba-sidebar></ba-sidebar>
+      <page-top></page-top>
+
+      <div class="al-main">
+        <div class="al-content">
+          <content-top></content-top>
+          <div ui-view autoscroll="true" autoscroll-body-top></div>
+        </div>
+      </div>
+
+      <footer class="al-footer clearfix">
+        <div class="al-footer-main clearfix">
+          <div class="al-copy">© Copyright 2017 | <a href="http://www.tonyqian.com">Tony Qian. All Rights Reserved.</a></div>
+        </div>
+        <div class="al-footer-right">Created with <i class="fa fa-heart"></i> by Tony Qian | info@tonyqian.com</div>
+      </footer>
+
+      <back-top></back-top>
+    </main>
+
+    <div id="preloader" ng-show="!$pageFinishedLoading">
+      <div></div>
+    </div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-XXXXX-X');
+      ga('send', 'pageview');
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <!-- build:js({client,node_modules}) app/vendor.js -->
+      <!-- bower:js -->
+      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/angular-resource/angular-resource.js"></script>
+      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/angular-socket-io/socket.js"></script>
+      <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
+      <script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
+      <script src="bower_components/moment/moment.js"></script>
+      <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+      <script src="bower_components/chart.js/dist/Chart.js"></script>
+      <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+      <script src="bower_components/chartist/dist/chartist.js"></script>
+      <script src="bower_components/rangy/rangy-core.js"></script>
+      <script src="bower_components/rangy/rangy-classapplier.js"></script>
+      <script src="bower_components/rangy/rangy-highlighter.js"></script>
+      <script src="bower_components/rangy/rangy-selectionsaverestore.js"></script>
+      <script src="bower_components/rangy/rangy-serializer.js"></script>
+      <script src="bower_components/rangy/rangy-textrange.js"></script>
+      <script src="bower_components/textAngular/dist/textAngular.js"></script>
+      <script src="bower_components/textAngular/dist/textAngular-sanitize.js"></script>
+      <script src="bower_components/textAngular/dist/textAngularSetup.js"></script>
+      <script src="bower_components/jstree/dist/jstree.js"></script>
+      <script src="bower_components/ng-js-tree/dist/ngJsTree.js"></script>
+      <script src="bower_components/angular-ui-select/dist/select.js"></script>
+      <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+      <script src="bower_components/angular-ui-sortable/sortable.js"></script>
+      <script src="bower_components/angular-animate/angular-animate.js"></script>
+      <script src="bower_components/angular-touch/angular-touch.js"></script>
+      <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+      <script src="bower_components/slimScroll/jquery.slimscroll.js"></script>
+      <script src="bower_components/slimScroll/jquery.slimscroll.min.js"></script>
+      <script src="bower_components/angular-slimscroll/angular-slimscroll.js"></script>
+      <script src="bower_components/angular-progress-button-styles/dist/angular-progress-button-styles.min.js"></script>
+      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+      <script src="bower_components/angular-spinner/dist/angular-spinner.min.js"></script>
+      <script src="bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
+      <script src="bower_components/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.js"></script>
+      <!-- endbower -->
+      <script src="socket.io-client/socket.io.js"></script>
+    <!-- endbuild -->
+    <!-- build:js(.tmp) app/app.js -->
+      <script src="app/app.js"></script>
+      <!-- injector:js -->
+      <script src="app/pages/account/account.module.js"></script>
+      <script src="app/pages/account/login/login.module.js"></script>
+      <script src="app/pages/account/logout/logout.module.js"></script>
+      <script src="app/pages/account/settings/settings.module.js"></script>
+      <script src="app/pages/admin/admin.module.js"></script>
+      <script src="app/pages/admin/server/server.module.js"></script>
+      <script src="app/pages/admin/signup/signup.module.js"></script>
+      <script src="app/pages/admin/users/users.module.js"></script>
+      <script src="app/pages/dashboard/dashboard.module.js"></script>
+      <script src="app/pages/pages.module.js"></script>
+      <script src="app/theme/components/components.module.js"></script>
+      <script src="app/theme/inputs/inputs.module.js"></script>
+      <script src="app/theme/theme.module.js"></script>
+      <script src="components/auth/auth.module.js"></script>
+      <script src="components/resources/resources.module.js"></script>
+      <script src="components/util/util.module.js"></script>
+      <script src="app/app.constant.js"></script>
+      <script src="app/pages/account/login/login.controller.js"></script>
+      <script src="app/pages/account/settings/settings.controller.js"></script>
+      <script src="app/pages/admin/server/server.controller.js"></script>
+      <script src="app/pages/admin/signup/signup.controller.js"></script>
+      <script src="app/pages/admin/users/users.controller.js"></script>
+      <script src="app/pages/dashboard/dashboard.controller.js"></script>
+      <script src="app/theme/components/baPanel/baPanel.directive.js"></script>
+      <script src="app/theme/components/baPanel/baPanel.service.js"></script>
+      <script src="app/theme/components/baPanel/baPanelBlur.directive.js"></script>
+      <script src="app/theme/components/baPanel/baPanelBlurHelper.service.js"></script>
+      <script src="app/theme/components/baPanel/baPanelSelf.directive.js"></script>
+      <script src="app/theme/components/baSidebar/BaSidebarCtrl.js"></script>
+      <script src="app/theme/components/baSidebar/baSidebar.directive.js"></script>
+      <script src="app/theme/components/baSidebar/baSidebar.service.js"></script>
+      <script src="app/theme/components/baSidebar/baSidebarHelpers.directive.js"></script>
+      <script src="app/theme/components/baWizard/baWizard.directive.js"></script>
+      <script src="app/theme/components/baWizard/baWizardCtrl.js"></script>
+      <script src="app/theme/components/baWizard/baWizardStep.directive.js"></script>
+      <script src="app/theme/components/backTop/backTop.directive.js"></script>
+      <script src="app/theme/components/backTop/lib/jquery.backTop.min.js"></script>
+      <script src="app/theme/components/contentTop/contentTop.directive.js"></script>
+      <script src="app/theme/components/msgCenter/MsgCenterCtrl.js"></script>
+      <script src="app/theme/components/msgCenter/msgCenter.directive.js"></script>
+      <script src="app/theme/components/pageTop/pageTop.directive.js"></script>
+      <script src="app/theme/components/progressBarRound/progressBarRound.directive.js"></script>
+      <script src="app/theme/components/toastrLibConfig.js"></script>
+      <script src="app/theme/components/widgets/widgets.directive.js"></script>
+      <script src="app/theme/directives/animatedChange.js"></script>
+      <script src="app/theme/directives/autoExpand.js"></script>
+      <script src="app/theme/directives/autoFocus.js"></script>
+      <script src="app/theme/directives/includeWithScope.js"></script>
+      <script src="app/theme/directives/ionSlider.js"></script>
+      <script src="app/theme/directives/ngFileSelect.js"></script>
+      <script src="app/theme/directives/scrollPosition.js"></script>
+      <script src="app/theme/directives/trackWidth.js"></script>
+      <script src="app/theme/directives/zoomIn.js"></script>
+      <script src="app/theme/filters/image/appImage.js"></script>
+      <script src="app/theme/filters/image/kameleonImg.js"></script>
+      <script src="app/theme/filters/image/profilePicture.js"></script>
+      <script src="app/theme/filters/text/removeHtml.js"></script>
+      <script src="app/theme/inputs/baSwitcher/baSwitcher.js"></script>
+      <script src="app/theme/services/baProgressModal.js"></script>
+      <script src="app/theme/services/baUtil.js"></script>
+      <script src="app/theme/services/fileReader.js"></script>
+      <script src="app/theme/services/preloader.js"></script>
+      <script src="app/theme/services/stopableInterval.js"></script>
+      <script src="app/theme/theme.config.js"></script>
+      <script src="app/theme/theme.configProvider.js"></script>
+      <script src="app/theme/theme.constants.js"></script>
+      <script src="app/theme/theme.run.js"></script>
+      <script src="app/theme/theme.service.js"></script>
+      <script src="components/auth/auth.service.js"></script>
+      <script src="components/auth/interceptor.service.js"></script>
+      <script src="components/auth/router.decorator.js"></script>
+      <script src="components/auth/user.service.js"></script>
+      <script src="components/modal/modal.service.js"></script>
+      <script src="components/mongoose-error/mongoose-error.directive.js"></script>
+      <script src="components/oauth-buttons/oauth-buttons.controller.js"></script>
+      <script src="components/oauth-buttons/oauth-buttons.directive.js"></script>
+      <script src="components/socket/socket.service.js"></script>
+      <script src="components/util/util.service.js"></script>
+      <!-- endinjector -->
+    <!-- endbuild -->
+  </body>
+</html>

@@ -1,52 +1,51 @@
-const config = browser.params;
-import UserModel from '../../../server/api/user/user.model';
-import {LoginPage} from '../login/login.po';
-import {NavbarComponent} from '../../components/navbar/navbar.po';
+'use strict';
+
+var config = browser.params;
+var UserModel = require(config.serverConfig.root + '/server/api/user/user.model').default;
 
 describe('Logout View', function() {
-    const login = async (user) => {
-        await browser.get(`${config.baseUrl}/login`);
+  var login = function(user) {
+    let promise = browser.get(config.baseUrl + '/login');
+    require('../login/login.po').login(user);
+    return promise;
+  };
 
-        const loginPage = new LoginPage();
-        await loginPage.login(user);
-    };
+  var testUser = {
+    name: 'Test User',
+    email: 'test@example.com',
+    password: 'test'
+  };
 
-    const testUser = {
-        name: 'Test User',
-        email: 'test@example.com',
-        password: 'test'
-    };
+  beforeEach(function() {
+    return UserModel
+      .remove()
+      .then(function() {
+        return UserModel.create(testUser);
+      })
+      .then(function() {
+        return login(testUser);
+      });
+  });
 
-    beforeEach(async function() {
-        await UserModel
-            .remove();
+  after(function() {
+    return UserModel.remove();
+  })
 
-        await UserModel.create(testUser);
+  describe('with local auth', function() {
 
-        await login(testUser);
+    it('should logout a user and redirecting to "/"', function() {
+      var navbar = require('../../components/navbar/navbar.po');
+
+      expect(browser.getCurrentUrl()).to.eventually.equal(config.baseUrl + '/');
+      expect(navbar.navbarAccountGreeting.getText()).to.eventually.equal('Hello ' + testUser.name);
+
+      browser.get(config.baseUrl + '/logout');
+
+      navbar = require('../../components/navbar/navbar.po');
+
+      expect(browser.getCurrentUrl()).to.eventually.equal(config.baseUrl + '/');
+      expect(navbar.navbarAccountGreeting.isDisplayed()).to.eventually.equal(false);
     });
 
-    after(function() {
-        return UserModel.remove();
-    });
-
-    describe('with local auth', function() {
-        it('should logout a user and redirect to "/home"', async function() {
-            let navbar = new NavbarComponent();
-
-            browser.ignoreSynchronization = false;
-            await browser.wait(() => browser.getCurrentUrl(), 5000, 'URL didn\'t change after 5s');
-            browser.ignoreSynchronization = true;
-
-            expect((await browser.getCurrentUrl())).to.equal(`${config.baseUrl}/home`);
-            expect((await navbar.navbarAccountGreeting.getText())).to.equal(`Hello ${testUser.name}`);
-
-            await navbar.logout();
-
-            navbar = new NavbarComponent();
-
-            expect((await browser.getCurrentUrl())).to.equal(`${config.baseUrl}/home`);
-            expect((await navbar.navbarAccountGreeting.isDisplayed())).to.equal(false);
-        });
-    });
+  });
 });

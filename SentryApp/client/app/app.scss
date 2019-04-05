@@ -1,9 +1,8 @@
-$icon-font-path: '/assets/fonts/bootstrap/';
-@import '~bootstrap-sass/assets/stylesheets/bootstrap';
-$fa-font-path: '/assets/fonts/font-awesome/';
-@import '~font-awesome/scss/font-awesome';
-
-// @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,900|Roboto:300,500,700,900);
+$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+@import '../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+@import '../bower_components/bootstrap-social/bootstrap-social.scss';
+$fa-font-path: "../bower_components/font-awesome/fonts";
+@import '../bower_components/font-awesome/scss/font-awesome';
 
 /**
  * App-wide Styles
@@ -16,15 +15,76 @@ $fa-font-path: '/assets/fonts/font-awesome/';
   padding: 0.2em 0;
 }
 
-
-[hidden] {
-  display: none !important;
+@media (min-width: 1200px) {
+  .container {
+    width: 100% !important;
+  }
 }
 
-.ng-valid[required], .ng-valid.required  {
-  border-left: 5px solid #42A948; /* green */
-}
+// Get mixin and variables first
+@import 'sass/theme/conf/mixins';
+@import 'sass/theme/conf/colorScheme/mint';
+@import 'sass/theme/conf/variables';
 
-.ng-invalid:not(form)  {
-  border-left: 5px solid #a94442; /* red */
-}
+// Component styles are injected through grunt
+/* inject:scss */
+@import 'pages/admin/admin';
+@import 'sass/app/alerts';
+@import 'sass/app/buttonsPage';
+@import 'sass/app/chartsPage';
+@import 'sass/app/dashboard';
+@import 'sass/app/email';
+@import 'sass/app/form';
+@import 'sass/app/grid';
+@import 'sass/app/iconsPage';
+@import 'sass/app/modalNotifications';
+@import 'sass/app/modals';
+@import 'sass/app/notifications';
+@import 'sass/app/profile';
+@import 'sass/app/slider';
+@import 'sass/app/table';
+@import 'sass/app/tabsPage';
+@import 'sass/app/tplSkinPanel';
+@import 'sass/app/tree';
+@import 'sass/app/typography';
+@import 'sass/app/maps/google-maps';
+@import 'sass/app/maps/leaflet';
+@import 'sass/app/maps/map-bubbles';
+@import 'sass/app/maps/map-lines';
+@import 'sass/theme/blur-admin-theme';
+@import 'sass/theme/buttons';
+@import 'sass/theme/datePicker';
+@import 'sass/theme/icons';
+@import 'sass/theme/layout';
+@import 'sass/theme/preloader';
+@import 'sass/theme/socicon';
+@import 'sass/theme/table';
+@import 'sass/theme/tree';
+@import 'sass/theme/bootstrap-overrides/panel';
+@import 'sass/theme/bootstrap-overrides/tabs';
+@import 'sass/theme/components/accordion';
+@import 'sass/theme/components/backTop';
+@import 'sass/theme/components/baWizard';
+@import 'sass/theme/components/contentTop';
+@import 'sass/theme/components/msgCenter';
+@import 'sass/theme/components/pageTop';
+@import 'sass/theme/components/progressRound';
+@import 'sass/theme/components/sidebar';
+@import 'sass/theme/components/widgets';
+@import 'sass/theme/conf/mixins';
+@import 'sass/theme/conf/variables';
+@import 'sass/theme/conf/colorScheme/blur';
+@import 'sass/theme/conf/colorScheme/mint';
+@import 'sass/theme/dashboard/amChart';
+@import 'sass/theme/dashboard/amChartMap';
+@import 'sass/theme/dashboard/blurFeed';
+@import 'sass/theme/dashboard/calendar';
+@import 'sass/theme/dashboard/pieCharts';
+@import 'sass/theme/dashboard/popularApp';
+@import 'sass/theme/dashboard/timeline';
+@import 'sass/theme/dashboard/todo';
+@import 'sass/theme/dashboard/trafficChart';
+@import 'sass/theme/dashboard/weather';
+@import '../components/modal/modal';
+@import '../components/oauth-buttons/oauth-buttons';
+/* endinject */

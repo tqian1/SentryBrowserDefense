@@ -1,14 +1,15 @@
-/*eslint no-process-env:0*/
+'use strict';
 
 // Development specific configuration
 // ==================================
 module.exports = {
-    // MongoDB connection options
-    mongo: {
-        useMongoClient: true,
-        uri: process.env.MONGODB_URI || 'mongodb://localhost/sentryapp-dev'
-    },
 
-    // Seed database on startup
-    seedDB: true,
+  // MongoDB connection options
+  mongo: {
+    uri: 'mongodb://localhost/angularAdminFullstack-dev'
+  },
+
+  // Seed database on startup
+  seedDB: true
+
 };

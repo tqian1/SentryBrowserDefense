@@ -1,0 +1,98 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3>
+      Server {{ctr.serverInfo.ip}} Details
+      <span ng-if="ctr.loading"><span class="fa fa-circle-o-notch fa-spin fa-fw"></span></span>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <p>The server has been running for {{ctr.osUpTimeDuration}}.</p>
+    <p>The dashboard application has been running since {{ctr.dbUpTimeDuration}}.</p>
+  </div>
+</div>
+<div ng-hide="ctr.loading">
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Server Memory Details</h4>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <h4 class="list-group-item-heading">Memory Used</h4>
+            <p class="list-group-item-text">
+              <span>{{(ctr.serverInfo.memTotal - ctr.serverInfo.memFree) / 1024 / 1024 | number: 0}} MB,</span>
+              <span>{{(ctr.serverInfo.memTotal - ctr.serverInfo.memFree) /
+                ctr.serverInfo.memTotal * 100 | number: 2}} %,</span>
+              <span>({{ctr.serverInfo.memTotal - ctr.serverInfo.memFree | number: 0}} bytes)</span>
+            </p>
+          </li>
+          <li class="list-group-item">
+            <h4 class="list-group-item-heading">Memory Free</h4>
+            <p class="list-group-item-text">
+              <span>{{ctr.serverInfo.memFree / 1024 / 1024 | number: 0}} MB,</span>
+              <span>{{ctr.serverInfo.memFree / ctr.serverInfo.memTotal * 100 | number: 2}} %,</span>
+              <span>({{ctr.serverInfo.memFree | number: 0}} bytes)</span>
+            </p>
+          </li>
+          <li class="list-group-item">
+            <h4 class="list-group-item-heading">Total Memory</h4>
+            <p class="list-group-item-text">
+              <span>{{ctr.serverInfo.memTotal / 1024 / 1024 | number: 0}} MB</span>
+              <span>({{ctr.serverInfo.memTotal}} bytes)</span>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Server CPU Details</h4>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <h4 class="list-group-item-heading">CPU Model</h4>
+            <p class="list-group-item-text">{{ctr.serverInfo.cpuModel}}</p>
+          </li>
+          <li class="list-group-item">
+            <h4 class="list-group-item-heading">CPU Cores Amount</h4>
+            <p class="list-group-item-text">{{ctr.serverInfo.cpuCores}}</p>
+          </li>
+          <li class="list-group-item">
+            <h4 class="list-group-item-heading">CPU Load Average</h4>
+            <p class="list-group-item-text">{{ctr.cpuLoadAverage}}% - {{ctr.serverInfo.cpuLoad}}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Network Details</h4>
+        </div>
+        <div class="panel-body">
+          Network 1: {{ctr.serverInfo.network.Ethernet[3].address}} Family: {{ctr.serverInfo.network.Ethernet[3].family}}
+          <br><br>Network 2: {{ctr.serverInfo.network.Ethernet[2].address}} Family: {{ctr.serverInfo.network.Ethernet[2].family}}
+          <br><br>Network 3: {{ctr.serverInfo.network.Ethernet[0].address}} Family: {{ctr.serverInfo.network.Ethernet[0].family}}
+          <br><br>Network 4: {{ctr.serverInfo.network.Ethernet[1].address}} Family: {{ctr.serverInfo.network.Ethernet[1].family}}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Environment Details</h4>
+        </div>
+        <div class="panel-body">
+          OS: {{ctr.serverInfo.osType}} | Version {{ctr.serverInfo.osRelease}}
+          <br><br>Platform: {{ctr.serverInfo.osPlatform}} | Architecture: {{ctr.serverInfo.osArchitecture}}
+          <br><br>User: {{ctr.serverInfo.user.username}} | Homedir: {{ctr.serverInfo.user.homedir}}
+          <br><br>Node.js: {{ctr.serverInfo.nodeVer}} | MongoDB: v3.2.12
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

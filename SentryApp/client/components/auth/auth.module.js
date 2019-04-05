@@ -1,13 +1,8 @@
-import { NgModule } from '@angular/core';
-import { AuthService } from './auth.service';
-import { UserService } from './user.service';
-import { AuthGuard } from '../../components/auth/auth-guard.service';
+'use strict';
 
-@NgModule({
-    providers: [
-        AuthService,
-        UserService,
-        AuthGuard,
-    ]
-})
-export class AuthModule {}
+angular.module('angularAdminFullstackApp.auth', ['angularAdminFullstackApp.constants', 'angularAdminFullstackApp.util', 'ngCookies',
+    'ui.router'
+  ])
+  .config(function($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptor');
+  });

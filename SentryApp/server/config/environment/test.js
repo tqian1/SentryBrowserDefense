@@ -1,23 +1,20 @@
-/*eslint no-process-env:0*/
+'use strict';
 
 // Test specific configuration
 // ===========================
 module.exports = {
-    // MongoDB connection options
-    mongo: {
-        useMongoClient: true,
-        uri: 'mongodb://localhost/sentryapp-test'
-    },
-    sequelize: {
-        uri: 'sqlite://',
-        options: {
-            logging: false,
-            operatorsAliases: false,
-            storage: 'test.sqlite',
-            define: {
-                timestamps: false
-            }
-        }
-    },
-    port: '9001',
+  // MongoDB connection options
+  mongo: {
+    uri: 'mongodb://localhost/angularAdminFullstack-test'
+  },
+  sequelize: {
+    uri: 'sqlite://',
+    options: {
+      logging: false,
+      storage: 'test.sqlite',
+      define: {
+        timestamps: false
+      }
+    }
+  }
 };
