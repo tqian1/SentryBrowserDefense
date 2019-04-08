@@ -2,7 +2,7 @@
   Creation Date: Feburary 4, 2019
   Original author: François Beaufort
   Original author repository: https://github.com/GoogleChrome/chrome-app-samples
-  Authors of modifications: Fred Drury
+  Authors of modifications: Fred Drury, William Nichols
   Contents: Tests serial communication with Arduino over USB
 */
 
@@ -117,8 +117,16 @@ connection.onReadLine.addListener(function(line) {
   log('read line: ' + line);
   // if the line 'TEMPERATURE=' foo is returned, set the
   // set the button's text
-  if (line.indexOf("TEMPERATURE=")==0)
-    document.querySelector('#get_temperature').innerHTML = "Temp = "+line.substr(12);
+  //if (line.indexOf("TEMPERATURE=")==0)
+  //  document.querySelector('#get_temperature').innerHTML = "Temp = "+line.substr(12);
+  if (line.indexOf(sp)==0)
+    log('A Short Press was performed');
+  if (line.indexOf(lp)==0)
+    log('A Long Press was performed');
+  if (line.indexOf(cw)==0)
+    log('A ClockWise rotation was performed');
+  if (line.indexOf(tw)==0)
+    log('A counTer-clockWise rotation was performed');
 });
 
 // Populate the list of available devices
