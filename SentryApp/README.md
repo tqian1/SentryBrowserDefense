@@ -1,3 +1,9 @@
+Creation Date: April 1, 2019
+Original author: tqian1/generator-angular-fullstack
+Original author repository: https://github.com/angular-fullstack/generator-angular-fullstack 
+Authors of modifications: Tony Qian, Wrote code after initial boilerplate generation
+Contents: Contains the fullstack application/api for our Sentry heap snapshot profiler tool
+
 # sentry-app
 
 This is a fullstack application for our capstone, it is able to parse heap snapshots via web requests and present them for viewing via an API as well as a front end browser.
