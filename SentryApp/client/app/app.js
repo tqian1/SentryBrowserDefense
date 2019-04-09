@@ -8,6 +8,7 @@ import ngSanitize from 'angular-sanitize';
 
 import uiRouter from 'angular-ui-router';
 import uiBootstrap from 'angular-ui-bootstrap';
+import angularFileUpload from 'angular-file-upload';
 import 'angular-validation-match';
 
 import {
@@ -27,7 +28,7 @@ import util from '../components/util/util.module';
 import './app.scss';
 
 angular.module('sentryAppApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBootstrap, _Auth,
-  account, admin, dashboard, 'validation.match', navbar, footer, main, constants, util
+  account, admin, dashboard, 'validation.match', navbar, footer, main, constants, util, 'angularFileUpload',
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {

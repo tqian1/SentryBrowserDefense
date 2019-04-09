@@ -74,6 +74,21 @@ export function show(req, res) {
         .catch(handleError(res));
 }
 
+function uploadData(data) {
+  return new Promise(function(resolve, reject) {
+      console.log(data);
+      console.log("hello")
+  })
+}
+
+// Creates a new Heap in the DB
+export function upload(req, res) {
+    var uploadPromise = uploadData(req.data);
+    return uploadPromise
+        .then(respondWithResult(res, 201))
+        .catch(handleError(res));
+}
+
 // Creates a new Heap in the DB
 export function create(req, res) {
     return Heap.create(req.body)
