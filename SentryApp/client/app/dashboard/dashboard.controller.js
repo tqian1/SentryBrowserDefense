@@ -4,8 +4,14 @@ export default class DashboardController {
 
   /*@ngInject*/
   constructor($http, $scope, $q, FileUploader) {
-    var uploader = $scope.uploader = new FileUploader({
-            url: '../api/heaps/upload',
+    $scope.heapIds = []
+    $scope.getHeaps = function() {
+      $http.get('/api/heaps')
+        .then(response => {
+          $scope.heapIds = response.data;
         });
+    }
+
+    $scope.getHeaps()
   }
 }

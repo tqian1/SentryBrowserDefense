@@ -11,7 +11,7 @@ var storage = multer.diskStorage({
     cb(null, './snapshots/')
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname)
+    cb(null, file.originalname.split("-")[1].split(".")[0])
   }
 })
 var upload = multer({storage: storage}).single('file');
