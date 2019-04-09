@@ -8,6 +8,6 @@ export default function routes($stateProvider) {
     template: require('./upload.html'),
     controller: 'UploadController',
     controllerAs: 'admin',
-    // authenticate: 'user'
+    authenticate: 'user'
   });
 }
