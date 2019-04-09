@@ -7,6 +7,7 @@ client/bower_components
 client/app.html
 dist
 snapshots/*
+!snapshots/.gitkeep
 /server/config/local.env.js
 npm-debug.log
 coverage
