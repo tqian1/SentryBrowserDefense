@@ -1,6 +1,8 @@
 # sentry-app
 
-This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 4.2.3.
+This is a fullstack application for our capstone, it is able to parse heap snapshots via web requests and present them for viewing via an API as well as a front end browser.
+
+It was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 4.2.3.
 
 ## Getting Started
 
