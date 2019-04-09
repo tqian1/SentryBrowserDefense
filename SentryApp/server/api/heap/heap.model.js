@@ -3,8 +3,9 @@ import {registerEvents} from './heap.events';
 
 var HeapSchema = new mongoose.Schema({
   name: String,
-  info: String,
-  active: Boolean
+  nodes: Array,
+  nodesById: Array,
+  edges: Array
 });
 
 registerEvents(HeapSchema);
