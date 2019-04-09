@@ -19,6 +19,7 @@ import _Auth from '../components/auth/auth.module';
 import account from './account';
 import admin from './admin';
 import dashboard from './dashboard';
+import upload from './upload';
 import navbar from '../components/navbar/navbar.component';
 import footer from '../components/footer/footer.component';
 import main from './main/main.component';
@@ -28,7 +29,7 @@ import util from '../components/util/util.module';
 import './app.scss';
 
 angular.module('sentryAppApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBootstrap, _Auth,
-  account, admin, dashboard, 'validation.match', navbar, footer, main, constants, util, 'angularFileUpload',
+  account, admin, dashboard, upload, 'validation.match', navbar, footer, main, constants, util, 'angularFileUpload',
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {

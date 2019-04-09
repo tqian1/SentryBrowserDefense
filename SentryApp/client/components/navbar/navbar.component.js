@@ -10,6 +10,10 @@ export class NavbarComponent {
   }, {
     title: 'Dashboard',
     state: 'dashboard',
+  },
+  {
+    title: 'Upload',
+    state: 'upload',
   }];
   isLoggedIn: Function;
   isAdmin: Function;
