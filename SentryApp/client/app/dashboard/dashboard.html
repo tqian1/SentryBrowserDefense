@@ -1,6 +1,6 @@
 <div class="container">
   <div class="input-group">
-    <input type="file" nv-file-select uploader="uploader"/><br/>
+    <input type="file" ng-file-select="onFileSelect()"/><br/>
     <ul>
         <li ng-repeat="item in uploader.queue">
             Name: <span ng-bind="item.file.name"></span><br/>
