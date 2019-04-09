@@ -1,8 +1,8 @@
-Creation Date: April 1, 2019
-Original author: tqian1/generator-angular-fullstack
-Original author repository: https://github.com/angular-fullstack/generator-angular-fullstack 
-Authors of modifications: Tony Qian, Wrote code after initial boilerplate generation
-Contents: Contains the fullstack application/api for our Sentry heap snapshot profiler tool
+Creation Date: April 1, 2019  
+Original author: tqian1/generator-angular-fullstack  
+Original author repository: https://github.com/angular-fullstack/generator-angular-fullstack   
+Authors of modifications: Tony Qian, Wrote code after initial boilerplate generation  
+Contents: Contains the fullstack application/api for our Sentry heap snapshot profiler tool  
 
 # sentry-app
 
