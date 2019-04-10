@@ -33,13 +33,38 @@
   <div class="panel panel-default" ng-if="selectedHeap.nodeCount != 0">
     <div class="panel-body">
       <h3>Current Selected Heap: {{selectedHeap._id}}</h3>
-      <h4>Select range for node analysis</h4>
+    </div>
+  </div>
+
+  <div class="panel panel-default" ng-if="selectedHeap.nodeCount != 0">
+    <div class="panel-body">
+      <h3>Memory Disclosure Types Count (# of Disclosures)</h3>
+      <canvas id="line" class="chart chart-line" chart-data="data"
+      chart-labels="labels" chart-series="series" chart-options="options"
+      chart-dataset-override="datasetOverride" chart-click="onClick">
+      </canvas
+      <br>
+    </div>
+  </div>
+
+  <div class="panel panel-default" ng-if="selectedHeap.nodeCount != 0">
+    <div class="panel-body">
+      <h3>Memory Disclosure Types (Total Sizes in Bytes)</h3>
+      <canvas id="line" class="chart chart-line" chart-data="data2"
+      chart-labels="labels" chart-series="series" chart-options="options"
+      chart-dataset-override="datasetOverride" chart-click="onClick">
+      </canvas
+      <br>
+    </div>
+  </div>
+
+  <div class="panel panel-default" ng-if="selectedHeap.nodeCount != 0">
+    <div class="panel-body">
+      <h3>Memory Nodes Browser</h3>
+      <h5>Range for node analysis</h5>
       <rzslider rz-slider-model="slider.minValue"
                 rz-slider-high="slider.maxValue"
                 rz-slider-options="{floor: 0, ceil: selectedHeap.nodeCount, step: minRange/2, minRange: minRange, maxRange: maxRange, pushRange: true}"></rzslider>
-      <br><br>
-      <h1>hello</h1>
-      <br><br>
       <table class="table table-hover">
         <thead>
           <tr>

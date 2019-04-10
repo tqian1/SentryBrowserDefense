@@ -11,6 +11,7 @@ import uiBootstrap from 'angular-ui-bootstrap';
 import angularFileUpload from 'angular-file-upload';
 import 'angular-validation-match';
 import rzSlider from 'angularjs-slider';
+import charjs from 'angular-chart.js'
 
 import {
   routeConfig
@@ -30,7 +31,7 @@ import util from '../components/util/util.module';
 import './app.scss';
 
 angular.module('sentryAppApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBootstrap, _Auth,
-  account, admin, dashboard, upload, 'validation.match', navbar, footer, main, constants, util, 'angularFileUpload', 'rzSlider'
+  account, admin, dashboard, upload, 'validation.match', navbar, footer, main, constants, util, 'angularFileUpload', 'rzSlider', 'chart.js'
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {
