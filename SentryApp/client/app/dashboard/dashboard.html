@@ -38,7 +38,26 @@
                 rz-slider-high="slider.maxValue"
                 rz-slider-options="{floor: 0, ceil: selectedHeap.nodeCount, step: minRange/2, minRange: minRange, maxRange: maxRange, pushRange: true}"></rzslider>
       <br><br>
-      <button class="btn btn-primary" ng-click="getNodes()">Analyse</button>
+      <h1>hello</h1>
+      <br><br>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Size (bytes)</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="node in nodesRange()">
+          <tr">
+            <th scope="row">{{node.id}}</th>
+            <th scope="row">{{node.name}}</th>
+            <th scope="row">{{node.type}}</th>
+            <th scope="row">{{node.size}}</th>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

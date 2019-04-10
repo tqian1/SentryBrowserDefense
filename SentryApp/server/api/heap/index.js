@@ -26,19 +26,33 @@ var parser = require('heapsnapshot-parser');
 router.get('/', controller.index);
 router.get('/:id', function (req, res, next) {
     Heap.findById(req.params.id).exec().then((heap) => {
-      // retrieve the snapshot object
-      var snapshotFile = fs.readFileSync(req.file.path, {encoding: "utf-8"});
-      var snapshot = parser.parse(snapshotFile);
-      // lets make the object
-      Heap.create({
-        filename: req.file.filename,
-        filepath: req.file.path,
-        date: new Date().toString(),
-        nodeCount: snapshot.nodes.length,
-        edgeCount: snapshot.edges.length,
+        // retrieve the snapshot object
+        var snapshotFile = fs.readFileSync(heap.filepath, {encoding: "utf-8"});
+        var snapshot = parser.parse(snapshotFile);
+        var data = {
+          nodes: [],
+          types: {}
+        }
+        for (var i = 0; i < snapshot.nodes.length; i++) {
+            var node = snapshot.nodes[i];
+            if (node.type in data.types) {
+              data.types[node.type].count += 1;
+              data.types[node.type].size += node.self_size;
+            } else {
+              data.types[node.type] = {
+                count: 0,
+                size: 0,
+              }
+            }
+            data.nodes.push({
+              type: node.type,
+              name: node.name,
+              id: node.id,
+              size: node.self_size,
+            });
+        }
+        return res.status(200).json(data);
       });
-      return res.status(200).json(heap);
-    })
 });
 router.post('/', function (req, res, next) {
     var path = '';
