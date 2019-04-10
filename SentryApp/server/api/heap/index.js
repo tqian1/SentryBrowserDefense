@@ -1,3 +1,7 @@
+// Creation Date: April 3, 2019
+// Original author: tqian1
+// Contents: Majority of the HEAP API
+
 import Heap from './heap.model';
 
 var express = require('express');
@@ -21,19 +25,20 @@ var parser = require('heapsnapshot-parser');
 
 router.get('/', controller.index);
 router.get('/:id', function (req, res, next) {
-    // retrieve the snapshot object
-    var snapshotFile = fs.readFileSync(req.file.path, {encoding: "utf-8"});
-    var snapshot = parser.parse(snapshotFile);
-    // lets make the object
-    Heap.create({
-      filename: req.file.filename,
-      filepath: req.file.path,
-      date: new Date().toString(),
-      nodeCount: snapshot.nodes.length,
-      edgeCount: snapshot.edges.length,
-    });
-
-    return res.send();
+    Heap.findById(req.params.id).exec().then((heap) => {
+      // retrieve the snapshot object
+      var snapshotFile = fs.readFileSync(req.file.path, {encoding: "utf-8"});
+      var snapshot = parser.parse(snapshotFile);
+      // lets make the object
+      Heap.create({
+        filename: req.file.filename,
+        filepath: req.file.path,
+        date: new Date().toString(),
+        nodeCount: snapshot.nodes.length,
+        edgeCount: snapshot.edges.length,
+      });
+      return res.status(200).json(heap);
+    })
 });
 router.post('/', function (req, res, next) {
     var path = '';
@@ -43,7 +48,7 @@ router.post('/', function (req, res, next) {
         console.log(err);
         return res.status(422).send("an Error occured")
       }
-      
+
       // no error so lets parse it
       var snapshotFile = fs.readFileSync(req.file.path, {encoding: "utf-8"});
       var snapshot = parser.parse(snapshotFile);
