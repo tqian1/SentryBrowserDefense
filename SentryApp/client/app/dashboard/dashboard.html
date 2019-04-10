@@ -1,6 +1,44 @@
 <div class="container">
-  <h2>Available Heap Dumps</h2>
-  <ul class="list-group" ng-repeat="heap in heapIds">
-    <a href="#" class="list-group-item">{{heap}}</a>
-  </ul>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h2>Available Heap Dumps</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Filename</th>
+            <th scope="col">Date</th>
+            <th scope="col">Node Count</th>
+            <th scope="col">Edge Count</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="heap in heapIds">
+          <tr ng-class="{'success': heap._id == selectedHeap._id}">
+            <th scope="row">{{heap._id}}</th>
+            <td>{{heap.filename}}</td>
+            <td>{{heap.date}}</td>
+            <td>{{heap.nodeCount}}</td>
+            <td>{{heap.edgeCount}}</td>
+            <td>
+              <input class="btn btn-success btn-xs" type="button" value="Select" ng-click="selectHeap(heap)">
+              <input class="btn btn-danger btn-xs" type="button" value="Delete" ng-click="deleteHeap(heap)">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel panel-default" ng-if="selectedHeap.nodeCount != 0">
+    <div class="panel-body">
+      <h3>Current Selected Heap: {{selectedHeap._id}}</h3>
+      <h4>Select range for node analysis</h4>
+      <rzslider rz-slider-model="slider.minValue"
+                rz-slider-high="slider.maxValue"
+                rz-slider-options="{floor: 0, ceil: selectedHeap.nodeCount, step: minRange/2, minRange: minRange, maxRange: maxRange, pushRange: true}"></rzslider>
+      <br><br>
+      <button class="btn btn-primary" ng-click="getNodes()">Analyse</button>
+    </div>
+  </div>
 </div>
