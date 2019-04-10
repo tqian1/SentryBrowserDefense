@@ -4,6 +4,8 @@
 
 import Heap from './heap.model';
 
+const mkdirp = require('mkdirp')
+
 var express = require('express');
 var controller = require('./heap.controller');
 var router = express.Router();
@@ -12,7 +14,8 @@ var multer = require('multer');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './snapshots/')
+    const dir = './snapshots/'
+    mkdirp(dir, err => cb(err, dir))
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
