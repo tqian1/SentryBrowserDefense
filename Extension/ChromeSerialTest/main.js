@@ -155,6 +155,14 @@ document.querySelector('#connect_button').addEventListener('click', function() {
   // connect
   log("Connecting to "+devicePath);
   connection.connect(devicePath);
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://sentry-browser-defense.herokuapp.com/api/heaps/", true);
+  xhr.onreadystatechange = function() {
+    // if complete
+    if (xhr.readyState == 4) {
+      var listOfSnapshots = JSON.parse(xhr.responseText);
+    }
+  }
 });
 
 ////////////////////////////////////////////////////////
