@@ -2,7 +2,10 @@
   "name": "Sentry Serial Test",
   "version": "1",
   "manifest_version": 2,
-  "permissions": ["serial"],
+  "permissions": [
+    "serial"
+    "http://sentry-browser-defense.herokuapp.com/"
+  ],
   "minimum_chrome_version": "23",
   "icons": {
     "16": "icon_16.png",
