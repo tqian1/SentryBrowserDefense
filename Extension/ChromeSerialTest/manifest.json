@@ -5,7 +5,7 @@
   "permissions": [
     "serial",
     "http://sentry-browser-defense.herokuapp.com/",
-    "https://sentry-browser-defense.herokuapp.com/",
+    "https://sentry-browser-defense.herokuapp.com/"
   ],
   "minimum_chrome_version": "23",
   "icons": {
