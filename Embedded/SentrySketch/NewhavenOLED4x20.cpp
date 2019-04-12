@@ -1,3 +1,11 @@
+/*
+  Creation Date: April, 2019
+  Original author: Andreas Taylor
+  Original author repository: https://gitlab.com/Andy4495/NewhavenOLED
+  Authors of modifications: Fred Drury
+  Contents: Newhave 4x20 OLED Character Display driver
+*/
+
 #include "NewhavenOLED4x20.h"
 
 

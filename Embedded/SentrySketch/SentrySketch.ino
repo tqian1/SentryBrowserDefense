@@ -1,3 +1,9 @@
+/*
+  Creation Date: April, 2019
+  Original author: Fred Drury
+  Contents: Simulates fully functioning HUD navigation
+*/
+
 #include "PinChangeInterrupt.h"
 #include "NewhavenOLED4x20.h"
 

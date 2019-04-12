@@ -1,3 +1,11 @@
+<!--
+  Creation Date: April 10, 2019
+  Original author: François Beaufort
+  Original author repository: https://github.com/GoogleChrome/chrome-app-samples
+  Authors of modifications: Fred Drury
+  Contents: Tests serial communication with Arduino over USB
+-->
+
 const serial = chrome.serial;
 
 /* Interprets an ArrayBuffer as UTF-8 encoded string data. */
